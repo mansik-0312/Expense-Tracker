@@ -30,7 +30,11 @@
         <!-- Add Transaction Form -->
         <form id="transaction-form">
             <input type="text" id="description" placeholder="Enter description" required>
-            <input type="number" id="amount" placeholder="Enter amount" required>
+            <input type="text" id="amount" placeholder="Enter amount" required>
+            <select id="type">
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
             <button type="submit">Add Transaction</button>
         </form>
 
@@ -38,6 +42,6 @@
         <ul id="transaction-list"></ul>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script-class.js"></script>
 </body>
 </html>
