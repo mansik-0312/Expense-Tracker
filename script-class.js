@@ -29,6 +29,12 @@ class ExpenseTracker {
             const li = document.createElement('li');
             li.textContent = `${transaction.description} : $${Math.abs(transaction.amount)}`;
             li.classList.add(transaction.type);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'X';
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.onclick = () => this.deleteTransaction(transaction.id);
+        li.appendChild(deleteBtn);
         })
     }
 }
