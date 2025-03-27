@@ -93,4 +93,11 @@ class ExpenseTracker {
         this.updateUI();
     }
 
+    // Delete a transaction
+    deleteTransaction(id) {
+        this.transactions = this.transactions.filter((transaction) => transaction.id !== id);
+        localStorage.setItem("transactions", JSON.stringify(this.transactions));
+        this.updateUI();
+    }
+
 }
