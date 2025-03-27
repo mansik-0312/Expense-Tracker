@@ -99,5 +99,8 @@ class ExpenseTracker {
         localStorage.setItem("transactions", JSON.stringify(this.transactions));
         this.updateUI();
     }
-
 }
+// Initialize ExpenseTracker
+document.addEventListener("DOMContentLoaded", () => {
+    new ExpenseTracker();
+});
