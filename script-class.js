@@ -52,4 +52,45 @@ class ExpenseTracker {
         this.expenseEl.textContent = totalExpense.toFixed(2);
         this.balanceEl.textContent = balance.toFixed(2);
     }
+    addTransaction(event) {
+        event.preventDefault();
+
+        const description = this.descriptionInput.value.trim();
+        let amount = this.amountInput.value.trim();
+        const type = this.typeInput.value;
+
+        if (!amount || isNaN(amount) || parseFloat(amount) <= 0) {
+            alert("Please enter a valid amount (positive number up to 2 decimal places).");
+            return;
+        }
+
+        amount = parseFloat(amount).toFixed(2);
+        amount = parseFloat(amount);
+
+        if (description === "") {
+            alert("Please enter a valid description.");
+            return;
+        }
+
+        if (type === "expense") {
+            amount *= -1;
+        }
+
+        const transaction = {
+            id: Date.now(),
+            description,
+            amount,
+            type,
+        };
+
+        this.transactions.push(transaction);
+        localStorage.setItem("transactions", JSON.stringify(this.transactions));
+
+        // Clear input fields
+        this.descriptionInput.value = "";
+        this.amountInput.value = "";
+
+        this.updateUI();
+    }
+
 }
