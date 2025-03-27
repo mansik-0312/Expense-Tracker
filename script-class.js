@@ -1,9 +1,10 @@
 class ExpenseTracker {
+    incomeE1;
     constructor () {
         this.transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-        this.balanceE1 = document.getElementById('balance');
-        this.incomeE1 = document.getElementById('income');
-        this.expenseE1 = document.getElementById('expense');
+        this.balanceEl = document.getElementById('balance');
+        this.incomeEl = document.getElementById('income');
+        this.expenseEl = document.getElementById('expense');
         this.transactionList = document.getElementById('transaction-list');
         this.transactionForm = document.getElementById('transaction-form');
         this.descriptionInput = document.getElementById('description');
@@ -15,7 +16,8 @@ class ExpenseTracker {
 
     // Initialize the tracker
     init() {
-        
+        this.transactionForm.addEventListener("submit", (event) => this.addTransaction(event));
+        this.updateUI();
     }
 
     updateUI() {
@@ -51,7 +53,10 @@ class ExpenseTracker {
         this.incomeEl.textContent = totalIncome.toFixed(2);
         this.expenseEl.textContent = totalExpense.toFixed(2);
         this.balanceEl.textContent = balance.toFixed(2);
+
+        // this.incomeE1.textContent = totalIncome.toFixed(2);
     }
+
     addTransaction(event) {
         event.preventDefault();
 
