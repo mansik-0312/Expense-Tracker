@@ -12,4 +12,23 @@ class ExpenseTracker {
 
         this.init();
     }
+
+    // Initialize the tracker
+    init() {
+        
+    }
+
+    updateUI() {
+        let totalIncome = 0,
+        totalExpense = 0,
+        balance = 0;
+
+        this.transactionList.innerHTML= '';
+
+        this.transactions.forEach((transaction) => {
+            const li = document.createElement('li');
+            li.textContent = `${transaction.description} : $${Math.abs(transaction.amount)}`;
+            li.classList.add(transaction.type);
+        })
+    }
 }
