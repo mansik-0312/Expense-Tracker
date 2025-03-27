@@ -35,6 +35,21 @@ class ExpenseTracker {
         deleteBtn.classList.add('delete-btn');
         deleteBtn.onclick = () => this.deleteTransaction(transaction.id);
         li.appendChild(deleteBtn);
-        })
+
+        this.transactionList.appendChild(li);
+
+        // Calculate total
+        if (transaction.type === 'income') {
+            totalIncome += transaction.amount;
+        } else {
+            totalExpense += Math.abs(transaction.amount);
+        }
+        balance = totalIncome - totalExpense;
+        });
+
+        // Update UI elements
+        this.incomeEl.textContent = totalIncome.toFixed(2);
+        this.expenseEl.textContent = totalExpense.toFixed(2);
+        this.balanceEl.textContent = balance.toFixed(2);
     }
 }
